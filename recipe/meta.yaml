@@ -1,5 +1,5 @@
 {% set name = "docker-cli" %}
-{% set version = "27.1.1" %}
+{% set version = "27.2.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/docker/cli/archive/v{{ version }}.tar.gz
-  sha256: 84db222b6d65695f3d8ae02acf8f21d90fb3f2169754bb94d314864c37bac7f3
+  sha256: cfd8b7b52a01e393a4e4bb584b367d0e7b8ebb4b25bf0f4b1d35b193197e8817
 
 build:
   number: 0
