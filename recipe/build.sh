@@ -25,4 +25,5 @@ go-md2man -in=man/Dockerfile.5.md -out=${PREFIX}/share/man/man5/Dockerfile.1
 go-md2man -in=man/docker-config-json.5.md -out=${PREFIX}/share/man/man5/docker-config-json.5
 go-md2man -in=man/dockerd.8.md -out=${PREFIX}/share/man/man8/dockerd.8
 
-go-licenses -mod=mod save ./cmd/docker --save_path=license-files
+go mod vendor -e
+go-licenses save ./cmd/docker --save_path=license-files
