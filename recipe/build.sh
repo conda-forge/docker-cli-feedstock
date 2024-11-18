@@ -4,9 +4,9 @@ set -o xtrace -o nounset -o pipefail -o errexit
 
 go mod init github.com/docker/cli
 go mod edit -replace github.com/imdario/mergo@v1.0.0=github.com/imdario/mergo@v0.3.16
+go get google.golang.org/genproto@latest
 go mod tidy -e
-go mod vendor -e
-go build -buildmode=pie -trimpath -o=${PREFIX}/bin/docker -ldflags="-s -w" ./cmd/docker
+go build -mod=mod -buildmode=pie -trimpath -o=${PREFIX}/bin/docker -ldflags="-s -w" ./cmd/docker
 
 mkdir -p ${PREFIX}/etc/bash_completion.d
 mkdir -p ${PREFIX}/share/zsh/site-functions
@@ -25,4 +25,5 @@ go-md2man -in=man/Dockerfile.5.md -out=${PREFIX}/share/man/man5/Dockerfile.1
 go-md2man -in=man/docker-config-json.5.md -out=${PREFIX}/share/man/man5/docker-config-json.5
 go-md2man -in=man/dockerd.8.md -out=${PREFIX}/share/man/man8/dockerd.8
 
+go mod vendor -e
 go-licenses save ./cmd/docker --save_path=license-files
