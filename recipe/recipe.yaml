@@ -1,5 +1,5 @@
 context:
-  version: "27.5.1"
+  version: "28.0.1"
 
 package:
   name: docker-cli
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/docker/cli/archive/v${{ version }}.tar.gz
-  sha256: abd16e3911bc7bbd00596ebe4f58baf3d577160d99eefd749a908507ddfc587b
+  sha256: d7495aa47f52e5ba5b16d6ffbc07678cbf496b9f00206c5918f936206ad986f5
 
 build:
   number: 0
