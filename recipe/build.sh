@@ -23,7 +23,6 @@ go-md2man -in=man/docker-build.1.md -out=${PREFIX}/share/man/man1/docker-build.1
 go-md2man -in=man/docker-run.1.md -out=${PREFIX}/share/man/man1/docker-run.1
 go-md2man -in=man/Dockerfile.5.md -out=${PREFIX}/share/man/man5/Dockerfile.1
 go-md2man -in=man/docker-config-json.5.md -out=${PREFIX}/share/man/man5/docker-config-json.5
-go-md2man -in=man/dockerd.8.md -out=${PREFIX}/share/man/man8/dockerd.8
 
 go mod vendor -e
 go-licenses save ./cmd/docker --save_path=license-files
