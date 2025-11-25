@@ -2,11 +2,12 @@
 
 set -o xtrace -o nounset -o pipefail -o errexit
 
+rm -rf vendor
 go mod init github.com/docker/cli
-go mod edit -replace github.com/imdario/mergo@v1.0.0=github.com/imdario/mergo@v0.3.16
 go get google.golang.org/genproto@latest
 go mod tidy -e
-go build -mod=mod -buildmode=pie -trimpath -o=${PREFIX}/bin/docker -ldflags="-s -w" ./cmd/docker
+go mod vendor -e
+go build -mod=mod -o=${PREFIX}/bin/docker -ldflags="-s -w -X github.com/docker/cli/cli/version.Version=${PKG_VERSION}" ./cmd/docker
 
 mkdir -p ${PREFIX}/etc/bash_completion.d
 mkdir -p ${PREFIX}/share/zsh/site-functions
