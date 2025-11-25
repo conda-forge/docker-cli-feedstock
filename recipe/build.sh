@@ -7,7 +7,7 @@ go mod init github.com/docker/cli
 go get google.golang.org/genproto@latest
 go mod tidy -e
 go mod vendor -e
-go build -mod=mod -o=${PREFIX}/bin/docker -ldflags="-s -w" ./cmd/docker
+go build -mod=mod -o=${PREFIX}/bin/docker -ldflags="-s -w -X github.com/docker/cli/cli/version.Version=${PKG_VERSION}" ./cmd/docker
 
 mkdir -p ${PREFIX}/etc/bash_completion.d
 mkdir -p ${PREFIX}/share/zsh/site-functions
