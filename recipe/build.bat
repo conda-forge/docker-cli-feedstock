@@ -1,3 +1,7 @@
+@echo on
+@setlocal EnableDelayedExpansion
+
+sed -i 's/archive.Gzip/compression.Gzip/' cli\command\image\build\context.go || goto :error
 go mod init "github.com/docker/cli" || goto :error
 go get google.golang.org/genproto@latest  || goto :error
 go mod edit -replace "github.com/imdario/mergo@v1.0.0=github.com/imdario/mergo@v0.3.16" || goto :error
