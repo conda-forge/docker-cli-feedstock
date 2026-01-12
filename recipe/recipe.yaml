@@ -20,6 +20,7 @@ requirements:
     - go-licenses
     - if: unix
       then: go-md2man
+    - sed
 
 tests:
   - script:
