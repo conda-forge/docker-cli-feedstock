@@ -7,6 +7,7 @@ go mod init github.com/docker/cli
 go get google.golang.org/genproto@latest
 go mod tidy -e
 go mod vendor -e
+sed -i 's/archive.Gzip/compression.Gzip/' cli/command/image/build/context.go
 go build -mod=mod -o=${PREFIX}/bin/docker -ldflags="-s -w -X github.com/docker/cli/cli/version.Version=${PKG_VERSION}" ./cmd/docker
 
 mkdir -p ${PREFIX}/etc/bash_completion.d
