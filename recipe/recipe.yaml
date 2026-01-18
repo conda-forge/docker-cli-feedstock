@@ -1,5 +1,5 @@
 context:
-  version: "29.1.4"
+  version: "29.1.5"
 
 package:
   name: docker-cli
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/docker/cli/archive/v${{ version }}.tar.gz
-  sha256: 25e4116fdc682e5d1644c45d02087450ea8ea88c5dff46d8a99533d7ec194610
+  sha256: 6198939fd6de9cec74f9129b388a7f259cac1fe63758d73a61216093001dc55a
 
 build:
   number: 0
@@ -19,11 +19,10 @@ requirements:
     - ${{ stdlib('c') }}
     - go-licenses
     - if: unix
-      then: go-md2man
-    - if: unix
-      then: sed
+      then:
+        - go-md2man
+        - sed
       else: m2-sed
-
 tests:
   - script:
       - docker --help
